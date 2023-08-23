@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+  
+  margin: 0px 100px 0px 100px;
+}
+
+/* ////////////////header////////////////////////////////// */
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Додайте бажаний відступ */
+  color: #fff; /* Додайте бажаний колір тексту */
+}
+
+.blog_post{
+  color: black;
+  font-size: 50px;
+}
+
+.butLogin{
+  border-radius: 50px;
+  font-size: 30px;
+  border-color: blue;
+  width: 320px;
+  height: 70px;
+}
+
+.butRegister{
+  background-color: blue;
+  color: #fff;
+  font-size: 30px;
+  border-radius: 30px;
+  margin-left: 10px;
+  width: 320px;
+  height: 70px;
+}
+
+
+/* ///////////////main page//////////////////// */
+
+.MainInformation{
+}
+
+
+
+
