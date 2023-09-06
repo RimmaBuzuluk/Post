@@ -3,7 +3,7 @@ import axios from '../axios';
 import {useDispatch, useSelector} from "react-redux"
 import { fetchPosts } from '../redux/slices/post';
 import { Grid, Tab, Tabs } from '@mui/material';
-import Page from '../component/Page/Page.jsx';
+import Page from '../component/Page.jsx';
 
 // import { Grid } from '@mui/material';
 
@@ -15,11 +15,11 @@ export const Home = () => {
   const isPostsLoading=posts.status==='loading'
   
   React.useEffect(()=>{
-    // axios.get('/posts')
+    
     dispatch(fetchPosts())
   },[])
 
-
+  
   console.log(posts)
   return (
     <div className='Home'>

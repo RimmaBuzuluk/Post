@@ -10,7 +10,7 @@ const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount
       padding: 20,
       margin: '50px',
       width: '1200px',
-      height: '1000px'
+      height: '700px'
     },
     image: {
       width: '100%',
@@ -23,6 +23,8 @@ const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount
     },
     authorAvatar: {
       marginRight: 10,
+      width:'100px',
+      height:'100px'
     },
     tagContainer: {
       marginTop: 10,
@@ -37,17 +39,19 @@ const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount
     },
     likeCommentIcon: {
       marginRight: 5,
-    },
+    }
   };
+
+  
 
   return (
     <Paper elevation={3} style={styles.paper}>
       <img src={imageUrl} alt={title} style={styles.image} />
       <div style={styles.authorInfo}>
-        {/* <Avatar src={user.avatarUrl} style={styles.authorAvatar} /> */}
+        <Avatar src={user.avatarUrl} style={styles.authorAvatar} />
         <div>
-          {/* <Typography variant="subtitle1">user.fullName</Typography>
-          <Typography variant="caption">{createdAt}</Typography> */}
+          <Typography variant="subtitle1">{user.fullName}</Typography>
+          <Typography variant="caption">{createdAt}</Typography>
         </div>
       </div>
       <Typography variant="h4" gutterBottom>
