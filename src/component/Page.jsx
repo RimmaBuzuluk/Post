@@ -48,10 +48,10 @@ const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount
     <Paper elevation={3} style={styles.paper}>
       <img src={imageUrl} alt={title} style={styles.image} />
       <div style={styles.authorInfo}>
-        <Avatar src={user.avatarUrl} style={styles.authorAvatar} />
+        {/* <Avatar src={user.avatarUrl} style={styles.authorAvatar} /> */}
         <div>
-          <Typography variant="subtitle1">{user.fullName}</Typography>
-          <Typography variant="caption">{createdAt}</Typography>
+          {/* <Typography variant="subtitle1">{user.fullName}</Typography>
+          <Typography variant="caption">{createdAt}</Typography> */}
         </div>
       </div>
       <Typography variant="h4" gutterBottom>
