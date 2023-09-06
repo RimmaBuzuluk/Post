@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography, Paper, Grid, Avatar, IconButton, Chip } from '@mui/material';
 import { FavoriteBorderOutlined, ModeCommentOutlined } from '@mui/icons-material';
 
+// import styles from '../style/Page.scss'
+
 const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount, commentsCount, tags, fixedSize }) => {
 
   
@@ -9,7 +11,7 @@ const Page = ({ id, title, text,avatarUrl, imageUrl, user, createdAt, viewsCount
     paper: {
       padding: 20,
       margin: '50px',
-      width: '1200px',
+      width: '1000px',
       height: '700px'
     },
     image: {

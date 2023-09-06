@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts, fetchTags } from '../redux/slices/post';
 import { Grid, Tab, Tabs } from '@mui/material';
 import Page from '../component/Page.jsx';
+import { TagsBlock } from '../component/TagsBlock';
 
 export const Home = () => {
   const dispatch = useDispatch();
   const { posts, tags } = useSelector(state => state.posts);
+
   const isPostsLoading = posts.status === 'loading';
+  const isTagsLoading = tags.status === 'loading';
 
   React.useEffect(() => {
     dispatch(fetchTags());
@@ -42,6 +45,28 @@ export const Home = () => {
               />
             )
           )}
+        </Grid>
+        <Grid xs={4} item>
+          <TagsBlock items={tags.item} isLoading={isTagsLoading} />
+          {/* <CommentsBlock
+            items={[
+              {
+                user: {
+                  fullName: 'Вася Пупкин',
+                  avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
+                },
+                text: 'Это тестовый комментарий',
+              },
+              {
+                user: {
+                  fullName: 'Иван Иванов',
+                  avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
+                },
+                text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
+              },
+            ]}
+            isLoading={false}
+          /> */}
         </Grid>
       </Grid>
     </div>
