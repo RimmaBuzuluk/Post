@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
-import styles from "../style/Login.css";
+import "../style/Login.css";
 
 export const Login = () => {
     return (

@@ -1,0 +1,21 @@
+/* Установка тени на "none" */
+.shadows-none {
+    box-shadow: none;
+  }
+  
+  /* Настройка основного цвета (первичного цвета) */
+  .primary-color {
+    color: #4361ee;
+  }
+  
+  /* Настройка стиля для кнопок */
+  .button-typography {
+    text-transform: none;
+    font-weight: 400;
+  }
+  
+  
+  
+  
+  
+  
