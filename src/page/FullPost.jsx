@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import  { Post } from "../component/Post";
 import { useParams } from "react-router-dom";
 import axios from "../axios";
+import { CommentsBlock } from '../component/CommentsBlock';
+
+
 
 export const FullPost = () => {
   
@@ -9,13 +12,12 @@ export const FullPost = () => {
 
   const [data, setData]=useState();
   const [isLoading, setIsLoading]=useState(true);
-  console.log(data)
 
   useEffect(()=>{
     axios.get(`/posts/${id}`).then(res=>{
       setData(res.data)
       setIsLoading(false)
-      console.log(data)
+      
     })
     .catch((err)=>{
       console.log(err);
@@ -27,29 +29,26 @@ export const FullPost = () => {
     return <Post isLoading={isLoading} isFullPost/>
   }
 
+  console.log(data.user)
 
   return (
     <>
       <Post
-        // id={data._id}
+        id={data._id}
         title={data.title}
         imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
-        user={{
-          avatarUrl:
-            "https://res.cloudinary.com/practicaldev/image/fetch/s--uigxYVRB--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/187971/a5359a24-b652-46be-8898-2c5df32aa6e0.png",
-          fullName: "Keff",
-        }}
-        createdAt={"12 июня 2022 г."}
+        user={data.user}
+        createdAt={data.createdAt}
         viewsCount={150}
         commentsCount={3}
-        tags={["react", "fun", "typescript"]}
+        tags={data.tags}
         isFullPost
       >
         <p>
-          {/* {data.text} */}
+          {data.text}
         </p>
       </Post>
-      {/* <CommentsBlock
+      <CommentsBlock
         items={[
           {
             user: {
@@ -68,8 +67,8 @@ export const FullPost = () => {
         ]}
         isLoading={false}
       >
-        <Index />
-      </CommentsBlock> */}
+        {/* <Index /> */}
+      </CommentsBlock>
     </>
   );
 };

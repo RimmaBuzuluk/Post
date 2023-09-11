@@ -7,7 +7,7 @@ import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 
 import "../style/Post.css"
-// import { UserInfo } from './UserInfo';
+import { UserInfo } from './UserInfo';
 // import { PostSkeleton } from '../Skeleton/PostSkeleton';
 import {Link } from 'react-router-dom';
 
@@ -28,6 +28,8 @@ export const Post = ({
   if (isLoading) {
     // return <PostSkeleton />;
   }
+
+  console.log(user)
 
   const onClickRemove = () => {};
 
@@ -53,7 +55,7 @@ export const Post = ({
         />
       )}
       <div className="wrapper">
-        {/* <UserInfo {...user} additionalText={createdAt} /> */}
+        <UserInfo {...user} additionalText={createdAt} />
         <div className="indention">
           <h2 className="title">
             {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
