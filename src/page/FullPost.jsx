@@ -6,13 +6,16 @@ import axios from "../axios";
 export const FullPost = () => {
   
   const {id}=useParams()
-  console.log(id)
+
   const [data, setData]=useState();
   const [isLoading, setIsLoading]=useState(true);
+  console.log(data)
 
   useEffect(()=>{
     axios.get(`/posts/${id}`).then(res=>{
       setData(res.data)
+      setIsLoading(false)
+      console.log(data)
     })
     .catch((err)=>{
       console.log(err);
@@ -21,14 +24,14 @@ export const FullPost = () => {
   },[])
 
   if(isLoading){
-    <Post isLoading={isLoading}/>
+    return <Post isLoading={isLoading} isFullPost/>
   }
 
-  
+
   return (
     <>
       <Post
-        id={data.id}
+        // id={data._id}
         title={data.title}
         imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
         user={{
@@ -43,7 +46,7 @@ export const FullPost = () => {
         isFullPost
       >
         <p>
-          {data.text}
+          {/* {data.text} */}
         </p>
       </Post>
       {/* <CommentsBlock
