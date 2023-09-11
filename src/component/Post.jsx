@@ -12,7 +12,7 @@ import "../style/Post.css"
 import {Link } from 'react-router-dom';
 
 export const Post = ({
-  _id,
+  id,
   title,
   createdAt,
   imageUrl,
@@ -35,7 +35,7 @@ export const Post = ({
     <div className="root">
       {isEditable && (
         <div className='editButtons'>
-          <Link to={`/posts/${_id}/edit`}>
+          <Link to={`/posts/${id}/edit`}>
             <IconButton color="primary">
               <EditIcon />
             </IconButton>
@@ -56,15 +56,15 @@ export const Post = ({
         {/* <UserInfo {...user} additionalText={createdAt} /> */}
         <div className="indention">
           <h2 className="title">
-            {isFullPost ? title : <Link to={`/posts/${_id}`}>{title}</Link>}
+            {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
           </h2>
-          {/* <ul className='tags'>
+          <ul className='tags'>
             {tags.map((name) => (
               <li key={name}>
                 <Link to={`/tag/${name}`}>#{name}</Link>
               </li> 
              ))}
-          </ul> */}
+          </ul>
           {children && <div className="content">{children}</div>}
           <ul className='postDetails'>
             <li>

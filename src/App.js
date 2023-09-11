@@ -2,10 +2,10 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home } from './page/Home';
-import { FullPost } from './page/FullPost';
 import { Login } from './page/Login';
 import { Registration } from './page/Registration';
 import { AddPost } from './page/AddPost';
+import {FullPost} from './page/FullPost';
 import {Header} from './Header'
 
 import Container from "@mui/material/Container";

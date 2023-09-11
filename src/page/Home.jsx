@@ -32,7 +32,7 @@ export const Home = () => {
             ) : (
               <Post
                 key={obj._id} // Додайте унікальний ключ для кожного об'єкта
-                _id={obj._id}
+                id={obj._id}
                 title={obj.title}
                 text={obj.text}
                 imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
