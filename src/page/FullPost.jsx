@@ -29,7 +29,7 @@ export const FullPost = () => {
     return <Post isLoading={isLoading} isFullPost/>
   }
 
-  console.log(data.user)
+  // console.log(data.user)
 
   return (
     <>

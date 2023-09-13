@@ -29,7 +29,7 @@ export const Post = ({
     // return <PostSkeleton />;
   }
 
-  console.log(user)
+
 
   const onClickRemove = () => {};
 
