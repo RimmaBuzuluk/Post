@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
@@ -7,9 +8,10 @@ import Button from "@mui/material/Button";
 import { useForm } from "react-hook-form";
 
 import "../style/Login.css";
-import { fetchAuth } from "../redux/slices/auth";
+import { fetchAuth, selectIsAuth } from "../redux/slices/auth";
 
 export const Login = () => {
+  const isAuth=useSelector(selectIsAuth)
   const dispatch=useDispatch()
   const {
     register,
@@ -17,7 +19,7 @@ export const Login = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "",
+      email: "botuzov@test",
       password: "",
     },
     mode: "onChange",
@@ -26,6 +28,12 @@ export const Login = () => {
   const onSubmit = (values) => {
     dispatch(fetchAuth(values))
   };
+
+  console.log(isAuth)
+
+ if(isAuth){
+  return<Navigate to="/"/>
+ }
 
   return (
     <Paper className="root">
