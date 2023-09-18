@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -11,29 +11,43 @@ import "../style/Login.css";
 import { fetchAuth, selectIsAuth } from "../redux/slices/auth";
 
 export const Login = () => {
-  const isAuth=useSelector(selectIsAuth)
-  const dispatch=useDispatch()
+  const isAuth = useSelector(selectIsAuth)
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "botuzov@test",
-      password: "",
+      email: 'test@test.ru',
+      password: '123',
     },
-    mode: "onChange",
-  });
+    mode: 'onChange',
+  })
 
-  const onSubmit = (values) => {
-    dispatch(fetchAuth(values))
-  };
+  const onSubmit = async (values) => {
+    const data = await dispatch(fetchAuth(values))
 
-  console.log(isAuth)
+    if (!data.payload) {
+      return alert('Не удалось авторизоваться!')
+    }
+
+    if ('token' in data.payload) {
+      window.localStorage.setItem('token', data.payload.token)
+    }
+  }
+
+  if (isAuth) {
+    return <Navigate to="/" />
+  }
+  
+
 
  if(isAuth){
   return<Navigate to="/"/>
  }
+
+
 
   return (
     <Paper className="root">

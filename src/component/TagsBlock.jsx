@@ -20,32 +20,31 @@ export const TagsBlock = ({ items, isLoading = true }) => {
           padding: '15px 15px 0 15px'
         },
       };
-          
+      
+    
 
   return (
     <div>
       <SideBlock title="Тэги">
       <List>
-        {(isLoading ? [...Array(5)] : items).map((name, i) => (
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to={`/tags/${name}`}
-          >
-            <ListItem key={i} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TagIcon />
-                </ListItemIcon>
-                {isLoading ? (
-                  <Skeleton width={100} />
-                ) : (
-                  <ListItemText primary={name} />
-                )}
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        ))}
-      </List>
+  {(isLoading ? [...Array(5)] : items).map((name, i) => (
+    <Link
+      key={i}  // Use the tag name as the key
+      style={{ textDecoration: "none", color: "black" }}
+      to={`/tags/${name}`}
+    >
+      <ListItem disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <TagIcon />
+          </ListItemIcon>
+          {isLoading ? <Skeleton width={100} /> : <ListItemText primary={name} />}
+        </ListItemButton>
+      </ListItem>
+    </Link>
+  ))}
+</List>
+
       </SideBlock>
     </div>
   );

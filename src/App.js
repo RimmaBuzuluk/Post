@@ -9,8 +9,24 @@ import {FullPost} from './page/FullPost';
 import {Header} from './Header'
 
 import Container from "@mui/material/Container";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchAuthMe, selectIsAuth } from './redux/slices/auth';
 
 function App() {
+
+
+
+  const dispatch = useDispatch()
+  const isAuth = useSelector(selectIsAuth);
+
+  useEffect(() => {
+    dispatch(fetchAuthMe())
+  }, [])
+
+
+ console.log(isAuth)
+
   return (
     <>
     
