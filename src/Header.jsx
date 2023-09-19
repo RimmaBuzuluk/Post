@@ -18,6 +18,8 @@ export const Header = () => {
     }
   }
 
+  console.log("header",isAuth)
+  console.log("header selectIsAuth",selectIsAuth)
 
   return (
     <div className="root">
