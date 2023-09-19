@@ -9,7 +9,7 @@ import { CommentsBlock } from '../component/CommentsBlock';
 
 export const Home = () => {
   const dispatch = useDispatch()
-  // const userData = useSelector((state) => state.auth.data)
+  const userData = useSelector((state) => state.auth.data)
   const { posts, tags } = useSelector((state) => state.posts)
 
   const isPostsLoading = posts.status === 'loading'
@@ -44,7 +44,8 @@ export const Home = () => {
                 viewsCount={150}
                 commentsCount={3}
                 tags={obj.tags}
-                isEditable
+                isOwner={obj.user}
+                isEditable={userData?._id === obj.user._id}
               />
             )
           )}
