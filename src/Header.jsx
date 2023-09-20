@@ -18,8 +18,8 @@ export const Header = () => {
     }
   }
 
-  console.log("header",isAuth)
-  console.log("header selectIsAuth",selectIsAuth)
+  // console.log("header",isAuth)
+  // console.log("header selectIsAuth",selectIsAuth)
 
   return (
     <div className="root">
@@ -30,7 +30,7 @@ export const Header = () => {
         <div className="buttons">
           {isAuth ? (
             <>
-              <Link to="/posts/create">
+              <Link to="/add-post">
                 <Button variant="contained">Написать статью</Button>
               </Link>
               <Button

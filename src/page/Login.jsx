@@ -12,7 +12,7 @@ import { fetchAuth, selectIsAuth } from "../redux/slices/auth";
 
 export const Login = () => {
   const isAuth = useSelector(selectIsAuth)
-  console.log("login",isAuth)
+  // console.log("login",isAuth)
   const dispatch = useDispatch()
   const {
     register,
