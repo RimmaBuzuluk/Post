@@ -15,7 +15,6 @@ export const AddPost = () => {
   const isAuth = useSelector(selectIsAuth)
   const navigate=useNavigate() 
 
-  // const imageUrl = '';
   const [text, setText] =useState('');
   const [title, setTitle] =useState('');
   const [isLoading, setLoading] =useState(false);
@@ -51,7 +50,7 @@ export const AddPost = () => {
       const fields={ 
         title,
         imageUrl,
-        tags,
+        tags: tags.split(',') ,
         text
       }
       const {data}=await axios.post('/posts', fields)
@@ -96,6 +95,7 @@ export const AddPost = () => {
           Удалить
         </Button>
         <img className="image" src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
+
         </>
       )}
       

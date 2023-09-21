@@ -8,7 +8,7 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 
 import "../style/Post.css"
 import { UserInfo } from './UserInfo';
-// import { PostSkeleton } from '../Skeleton/PostSkeleton';
+import { PostSkeleton } from '../Skeleton/PostSkeleton';
 import {Link } from 'react-router-dom';
 
 export const Post = ({
@@ -26,10 +26,10 @@ export const Post = ({
   isEditable,
 }) => {
   if (isLoading) {
-    // return <PostSkeleton />;
+    return <PostSkeleton />;
   }
 
-
+console.log(imageUrl)
 
   const onClickRemove = () => {};
 
@@ -60,13 +60,13 @@ export const Post = ({
           <h2 className="title">
             {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
           </h2>
-          {/* <ul className='tags'>
+          <ul className='tags'>
             {tags.map((name) => (
               <li key={name}>
                 <Link to={`/tag/${name}`}>#{name}</Link>
               </li> 
              ))}
-          </ul> */}
+          </ul>
           {children && <div className="content">{children}</div>}
           <ul className='postDetails'>
             <li>
