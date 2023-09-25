@@ -3,12 +3,12 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
+
 
 import '../style/Registration.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { fetchAuth, fetchRegister, selectIsAuth } from '../redux/slices/auth';
+import {  fetchRegister, selectIsAuth } from '../redux/slices/auth';
 import { Navigate } from 'react-router-dom';
 
 export const Registration = () => {

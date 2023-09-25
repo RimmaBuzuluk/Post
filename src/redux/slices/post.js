@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
+
 export const fetchPosts=createAsyncThunk('posts/fetchPosts', async()=>{
     const {data}=await axios.get('/posts');
     return data
@@ -10,6 +11,10 @@ export const fetchTags=createAsyncThunk('posts/fetchTags', async()=>{
     const {data}=await axios.get('/tags');
     return data
 })
+
+export const fetchRemovePost=createAsyncThunk('posts/fetchRemovePost', async(id)=>
+     axios.delete(`/posts/${id}`),
+)
 
 
 const initialState={
@@ -52,7 +57,12 @@ const postsSlice=createSlice({
         [fetchTags.rejected]:(state)=>{
             state.tags.item=[];
             state.tags.status='error';
-        }
+        },
+        /////////////////////
+        [fetchRemovePost.pending]: (state, action) => {
+            state.posts.item = state.posts.item.filter(obj => obj._id !== action.meta.arg);
+          }
+          
     }
 })
 

@@ -10,6 +10,8 @@ import "../style/Post.css"
 import { UserInfo } from './UserInfo';
 import { PostSkeleton } from '../Skeleton/PostSkeleton';
 import {Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchRemovePost } from '../redux/slices/post';
 
 export const Post = ({
   id,
@@ -25,13 +27,23 @@ export const Post = ({
   isLoading,
   isEditable,
 }) => {
+
+
+  const dispatch=useDispatch()
+
   if (isLoading) {
     return <PostSkeleton />;
   }
 
-console.log(imageUrl)
+ 
 
-  const onClickRemove = () => {};
+
+
+  const onClickRemove = () => {
+    if (window.confirm('Ви дійсно хочете видалити цю статтю?')) {
+      dispatch(fetchRemovePost(id)); // dispatch правильної функції з правильним ID
+    }
+  };
 
   return (
     <div className="root">
