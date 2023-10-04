@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import SimpleMDE from 'react-simplemde-editor';
-import {Link, Navigate, useNavigate } from 'react-router-dom';
+import {Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import 'easymde/dist/easymde.min.css';
 import styles from '../style/AddPost.css';
 import { selectIsAuth } from '../redux/slices/auth';
@@ -14,6 +14,7 @@ import axios from '.././axios';
 export const AddPost = () => {
   const isAuth = useSelector(selectIsAuth)
   const navigate=useNavigate() 
+  const {id}=useParams();
 
   const [text, setText] =useState('');
   const [title, setTitle] =useState('');
@@ -60,6 +61,22 @@ export const AddPost = () => {
       console.warn('Ошибка при создании статьи')
     }
   }
+
+  useEffect(()=>{
+    if(id){
+      axios.get(`posts/${id}`)
+      .then(({data})=>{
+        setTitle(data.title);
+        setText(data.text);
+        setImageUrl(data.imageUrl);
+        setTags(data.tags)
+      }).catch(err=>{
+        console.warn(err);
+        alert("помилка при отриманні статті")
+      })
+    }
+
+  },[]);
 
   const options =useMemo(
     () => ({
