@@ -40,7 +40,7 @@ export const FullPost = () => {
         imageUrl={data.imageUrl ? `http://localhost:4444${data.imageUrl}`: ""}
         user={data.user}
         createdAt={data.createdAt}
-        viewsCount={150}
+        viewsCount={data.viewsCount}
         commentsCount={3}
         tags={data.tags}
         isFullPost
