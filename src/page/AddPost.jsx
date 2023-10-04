@@ -23,6 +23,8 @@ export const AddPost = () => {
   const [imageUrl, setImageUrl]=useState('')
   const inputFileRef =useRef(null)
 
+  const isEditing=Boolean(id)
+
   const handleChangeFile = async(event) => {
     try{
       const formData=new FormData();
@@ -51,16 +53,23 @@ export const AddPost = () => {
       const fields={ 
         title,
         imageUrl,
-        tags: tags.split(','),
+        tags: tags,
         text
       }
-      const {data}=await axios.post('/posts', fields)
-      const id=data._id
-      navigate(`/posts/${id}`)
+
+      const {data}=isEditing
+      ?await axios.patch(`/posts/${id}`,fields)
+      : axios.patch(`/posts`, fields)
+
+      const _id= isEditing?id:data._id
+
+      navigate(`/posts/${_id}`)
     }catch(err){
       console.warn('Ошибка при создании статьи')
     }
   }
+
+
 
   useEffect(()=>{
     if(id){
@@ -131,7 +140,7 @@ export const AddPost = () => {
       <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
-          Опубликовать
+          {isEditing ? 'Сохранить':'Опубликовать'}
         </Button>
         <Link to="/">
           <Button size="large">Отмена</Button>
